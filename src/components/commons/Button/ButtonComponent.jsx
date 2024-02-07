@@ -1,7 +1,11 @@
-export default function ButtonComponent({ className, size, text }) {
+import './Button.style.css'
+
+export default function ButtonComponent( {text} ) {
     return (
-        <button className={className} size={size}>
+        <button className='Button'>
             {text}
         </button>
     );
 }
+
+

@@ -1,11 +1,14 @@
 import ButtonComponent from "../../components/commons/Button/ButtonComponent"
+import TitleComponent from "../../components/commons/Title/TitleComponent"
+import FormComponent from "../../components/dasboard/Form/FromComponent"
 
 export default function LoginPage(){
+    
     return(
         <>
-            <h1>HOLA SOY EL LOGIN</h1>
-            <button>HOLA</button>
-            <ButtonComponent className = "MIERDA" size = "LG" text={"mierda"}></ButtonComponent>
+            <TitleComponent text="Welcome To Bordeable" size="lg"/>
+            <FormComponent></FormComponent>
+            <ButtonComponent text="Enter"></ButtonComponent>
         </>
     )
 }
