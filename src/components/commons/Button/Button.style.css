@@ -2,9 +2,8 @@
     text-align: center;
     border-radius: 6px;
     background: #6D28D9;
-    /* justify-content: center;
-    align-items: center; */
-
+    border: none;
+    color: white;
     display: flex;
     height: 44px;
     padding: var(--spacing-2, 8px) var(--spacing-8, 32px);
@@ -12,5 +11,13 @@
     align-items: center;
     gap: var(--spacing-2, 8px);
     align-self: stretch;
+    transition: transform 0.1s;
 }
 
+.Button:hover, .Button:focus {
+    background-color: #7643D4; 
+}
+
+.Button:active {
+    transform: scale(1.05);
+}

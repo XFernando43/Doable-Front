@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    gap: 16px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-form{
+    padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--border, #D4D4D4);
+    background: var(--background, #FFF);
+}
+
+
+.label{
+    color: var(--foreground, #171717);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+    align-self: flex-start; 
+}
+
+.link_{
+    font-family: Inter;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+}
