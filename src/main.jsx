@@ -1,10 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import LoginPage from './pages/Login/LoginPage.jsx'
+import DashBoardPage from './pages/Dashboard/DashBoardPage.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Navigate to="/login" replace />,
+  },
+  {
+    path:'/login',
+    element: LoginPage(),
+  },
+  {
+    path:'/dashboard',
+    element: DashBoardPage()
+  }
+])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
