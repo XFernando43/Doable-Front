@@ -1,0 +1,17 @@
+
+.label_{
+    color: var(--foreground, #171717);
+    font-family: Inter;
+    /* font-size: 14px; */
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+}
+
+.sm{
+    font-size: 14px !important;
+}
+
+.md{
+    font-size: 28px !important;
+}
