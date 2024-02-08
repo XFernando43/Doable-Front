@@ -5,9 +5,9 @@ import './Select.style.css';
 export default function SelectComponent(){
     
     return(
-        <div className="container">
+        <div className="select_container">
             <TitleComponent text="My Boards" size="md"/>
-            <div className="select_container">
+            <div className="select_subcontainer">
                 <LabelComponent text="Sort By" size="sm" htmlFor="orderBy"/>
                 <select className="selector" name="" id="orderBy">
                     <option>Created Date</option>
