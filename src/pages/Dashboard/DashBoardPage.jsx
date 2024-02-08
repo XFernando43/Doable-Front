@@ -1,6 +1,6 @@
 import TopBarComponent from "../../components/commons/TopBar/TopBarComponent"
 import SelectComponent from "../../components/dasboard/SelectOrder/SelectComponent"
-// import CardComponent from "../../components/dasboard/Card/CardComponent"
+import CardComponent from "../../components/dasboard/Card/CardComponent"
 
 import './Dashboard.style.css';
 
@@ -10,10 +10,10 @@ export default function DashBoardPage(){
             <TopBarComponent></TopBarComponent>
             <div>
                 <SelectComponent/>
-            </div>
-            {/* 
                 <CardComponent/>
-            */}
+            </div>
+            
+           
         </>
     )
 }
