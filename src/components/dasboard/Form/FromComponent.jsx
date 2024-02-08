@@ -15,7 +15,7 @@ export default function FormComponent(){
                 <input className='input-form' type="text" id="password" />
             </div>
 
-            <ButtonComponent text="Login" size="lg"></ButtonComponent>
+            <ButtonComponent text="Login" type="Primary" size="lg"></ButtonComponent>
 
             <a className='link_' href="">Create an Account
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
