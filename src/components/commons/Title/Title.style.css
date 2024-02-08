@@ -5,13 +5,16 @@
     max-width: 220px;
     font-size: 36px;
     text-align: center;
-    /* font-style: normal; */
     font-weight: bold;
     line-height: 36px;
 }
 
 .sm{
     font-size: 14px !important;
+}
+
+.smm{
+    font-size: 18px !important;
 }
 
 .md{

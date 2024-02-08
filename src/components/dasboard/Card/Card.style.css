@@ -4,8 +4,10 @@
     flex-direction: column;
     padding: var(--spacing-4, 16px);
     gap: var(--spacing-4, 16px);
+    width: 350px;
+    height: 150px;
+    /* align-items: center; */
     background-color: #E2E8F0;
-    max-width: 256px;
 }
 
 .input_container{
@@ -28,7 +30,7 @@
     line-height: 1.5;  
 }
 
-/* Estilos adicionales para el foco */
+
 .text_area:focus {
     border-color: #66afe9; 
     outline: 0;

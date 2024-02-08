@@ -1,7 +1,11 @@
 .header{
     display: flex;
     align-items: center;
+    max-width: 1920px;
+    /* aca verificar con el tema de las pantallas */
+    height: 96px;
     justify-content: space-between;
+    margin-inline: auto;
 }
 
 .items-group{

@@ -1,0 +1,7 @@
+.listBoard_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    grid-gap: 32px; 
+    padding: var(--spacing-16, 64px) 0px;
+
+}
