@@ -19,6 +19,7 @@ export default function TopBarComponent(){
             <div className="items-group">
                 <ButtonComponent text="My Account" type="Secondary"/>
                 <ButtonComponent text="Logout" type="LogOut"/>
+                <ButtonComponent text="Delete My account" type="Danger"/>
             </div>
         </header>
     )    

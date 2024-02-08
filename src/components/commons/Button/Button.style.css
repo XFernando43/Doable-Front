@@ -13,18 +13,19 @@
     transition: transform 0.1s;
 }
 
-.Button:hover, .Button:focus {
-    background-color: #7643D4; 
+.Button:hover {
+    transform: scale(1.05);
+    background-color: #8347e2;
 }
 
 .Button:active {
-    transform: scale(1.05);
+    transform: scale(1.10);
 }
 
 
 
 .Primary{
-    background: #6D28D9 !important;
+    background: #6D28D9;
 }
 
 .Secondary{
@@ -36,16 +37,21 @@
 }
 
 .LogOut{
+    color: black;
+    font-weight: bold;
     border-radius: var(--rounded-md, 6px);
     background: var(--secondary, #E5E5E5) !important;
 }
 
-
-
-.max-width{
-    width: 100%;
+.Danger{
+    color: var(--danger-foreground, #450A0A);
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--danger-border, #DC2626);
+    background-color: #FEF2F2;
 }
 
-.md{
-    width: 70px;
+.Danger:hover {
+    background-color: #DC2626 !important;
+    color: white;
 }
+

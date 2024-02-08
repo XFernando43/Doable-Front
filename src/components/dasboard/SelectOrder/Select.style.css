@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500&display=swap');
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.select_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.label_{
+    color: var(--foreground, #171717);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px; /* 100% */
+}
+
+.selector{
+    height: 40px;
+    padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
+    gap: 4px;
+
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--border, #D4D4D4);
+    background: var(--background, #FFF);
+}
+
+.selector option {
+    padding: 8px;
+    background-color: #FFF; /* Color de fondo */
+    color: #000; /* Color del texto */
+    border: none; /* Elimina el borde */
+    outline: none; /* Elimina el resaltado al seleccionar */
+}
+
+/* Estilos para el hover y la selección */
+.selector option:hover {
+    background-color: #F0F0F0;
+}
+
+.selector option:checked {
+    background-color: #E5E5E5;
+}
