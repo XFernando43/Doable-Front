@@ -3,7 +3,6 @@ import FormComponent from "../../components/dasboard/Form/FromComponent"
 import './Login.style.css'
 
 export default function LoginPage(){
-    
     return(
         <div className="login_container">
             <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
