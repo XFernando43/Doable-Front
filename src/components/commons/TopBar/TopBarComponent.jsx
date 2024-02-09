@@ -1,9 +1,14 @@
+// import React from "react"
+import { useContext } from "react"
 import ButtonComponent from "../Button/ButtonComponent"
 import TitleComponent from "../Title/TitleComponent"
 
 import './TopBar.style.css'
+import { LoginContext } from "../../../contexts/ContextLogin"
 
 export default function TopBarComponent(){
+    const {handleLogout} = useContext(LoginContext)
+
     return(
         <header className="header">
             <div className="items-group">
@@ -18,7 +23,7 @@ export default function TopBarComponent(){
 
             <div className="items-group">
                 <ButtonComponent text="My Account" type="Secondary"/>
-                <ButtonComponent text="Logout" type="LogOut"/>
+                <ButtonComponent text="Logout" type="LogOut" _function={handleLogout}/>
                 {/* <ButtonComponent text="Delete My account" type="Danger"/> */}
             </div>
         </header>

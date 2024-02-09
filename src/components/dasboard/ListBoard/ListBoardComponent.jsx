@@ -32,21 +32,16 @@ export default function ListBoardComponent(){
     React.useEffect(()=>{
         getBoards();
         console.log(Boards);
-    });
+    },[]);
 
 
     return (
         <div className='listBoard_container'>
-
-    
-
-            <BoardComponent value="1" title="HOLA"/>
-            <BoardComponent title="HOLA"/>
+            <BoardComponent value="1"/>
             
-
             {
                 Boards.map(board => (
-                    <BoardComponent title={board.board_name} key={board.board_id}/>
+                    <BoardComponent title={board.board_name} color={board.board_color} key={board.board_id}/>
                 ))
             }
                    

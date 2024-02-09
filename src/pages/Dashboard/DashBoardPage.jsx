@@ -1,18 +1,19 @@
 import TopBarComponent from "../../components/commons/TopBar/TopBarComponent"
 import SelectComponent from "../../components/dasboard/SelectOrder/SelectComponent"
-// import CardComponent from "../../components/dasboard/Card/CardComponent"
 import ListBoardComponent from "../../components/dasboard/ListBoard/ListBoardComponent";
+import ContextLogin from "../../contexts/ContextLogin";
 import './Dashboard.style.css';
 
 export default function DashBoardPage(){
     return(
-        <div className="Board_container">
-            <TopBarComponent></TopBarComponent>
-            <div className="main_content">
-                <SelectComponent/>
-                <ListBoardComponent/>
-                
+        <ContextLogin>
+            <div className="Board_container">
+                <TopBarComponent></TopBarComponent>
+                <div className="main_content">
+                    <SelectComponent/>
+                    <ListBoardComponent/>  
+                </div>
             </div>
-        </div>
+        </ContextLogin>
     )
 }

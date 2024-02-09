@@ -7,13 +7,16 @@ const ContextLogin = ({ children }) => {
   const [userInfo, setUserInfo] = useState({ isLogin: false, username: "NONE", token: "TOKEN_NONE" });
   
   function handleLogin(username, token) {
-    // localStorage.setItem()
     const userNewInfo = { isLogin: true, username: username, token: token };
     setUserInfo(userNewInfo);
+    localStorage.setItem('token',token);
+    localStorage.setItem('user',username);
   }
   
   function handleLogout() {
     setUserInfo({ isLogin: false, username: "", token: "" });
+    localStorage.setItem('token','');
+    localStorage.setItem('user','');
   }
 
   return (

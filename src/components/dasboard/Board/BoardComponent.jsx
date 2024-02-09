@@ -5,7 +5,7 @@ import ColorModal from "../ColorModal/ColorModal";
 import './Board.style.css';
 import React from "react";
 
-export default function BoardComponent({ value, title, _id }){
+export default function BoardComponent({ value, title, _id, color }){
     const [Title,SetTitle] = React.useState('');
     const [Color, setColor] = React.useState('');
     const [PickerVisible, SetPickerVisible] = React.useState(false);
@@ -16,37 +16,42 @@ export default function BoardComponent({ value, title, _id }){
     }
 
     async function PostNewBoard() {
-        const token = localStorage.getItem('token');
         const url = 'https://bordeable-api.onrender.com/board';
-        let color = Color; 
-        const _body = {
-            Title,
-            color,
+        const token = localStorage.getItem('token');
+    
+        const boardData = {
+            name: Title,
+            color: Color,
         };
-        const options = {
-          method: "POST",
-          body: JSON.stringify(_body),
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-        };
+    
         try {
-          const response = await fetch(url, options);
-          if (response.ok) {
-            const data = await response.json();
-            console.log("Respuesta exitosa:", data);
-          } else {
-            console.error("Error en la solicitud:", response.status, response.statusText);
-          }
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(boardData)
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Board created successfully:', data);
+            } else {
+                console.error('Failed to create board:', response.statusText);
+            }
         } catch (error) {
-          console.error("Error:", error);
+            console.error('Error creating board:', error);
         }
-      }
+    }
 
     const background__color={
         background: Color, 
-      };
+    };
+
+    const background_color={
+        background: color, 
+    };
 
     return (
         <>
@@ -81,7 +86,7 @@ export default function BoardComponent({ value, title, _id }){
                     
                 </div>
             ) : (
-                <div className='card_container align-center board_created'>
+                <div className='card_container align-center board_created' style={background_color}>
                    <TitleComponent text={title} size="smm"/>
                 </div>
             )}
