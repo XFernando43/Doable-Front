@@ -54,3 +54,17 @@
 .align-center{
     align-items: center;
 }
+
+
+.colorPicker_container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ColorPicker_button{
+    border: none;
+    background-color: transparent;
+}

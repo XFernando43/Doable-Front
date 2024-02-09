@@ -53,12 +53,9 @@ export default function FormComponent() {
             <form className='form'>
                 
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
-
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
-                
 
                 <ButtonComponent text="Login" type="Primary" size="lg" _function={handleClick}></ButtonComponent>
-
 
                 <a className='link_' href="">Create an Account
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">

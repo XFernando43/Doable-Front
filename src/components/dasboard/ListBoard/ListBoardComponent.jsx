@@ -41,6 +41,8 @@ export default function ListBoardComponent(){
     
 
             <BoardComponent value="1" title="HOLA"/>
+            <BoardComponent title="HOLA"/>
+            
 
             {
                 Boards.map(board => (
