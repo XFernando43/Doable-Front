@@ -1,0 +1,34 @@
+.Form_input{
+    display: flex;
+    height: 40px;
+    padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--border, #D4D4D4);
+    background: var(--background, #FFF);
+}
+
+.label{
+    color: var(--foreground, #171717);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+    align-self: flex-start; 
+}
+
+.input-form{
+    padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--border, #D4D4D4);
+    background: var(--background, #FFF);
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

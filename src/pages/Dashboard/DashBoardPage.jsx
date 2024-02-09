@@ -10,7 +10,6 @@ export default function DashBoardPage(){
             <TopBarComponent></TopBarComponent>
             <div className="main_content">
                 <SelectComponent/>
-                {/* <CardComponent/> */}
                 <ListBoardComponent/>
                 
             </div>

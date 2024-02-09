@@ -1,14 +1,14 @@
 import React from 'react'
 import ButtonComponent from '../../commons/Button/ButtonComponent'
 import { LoginContext } from '../../../contexts/ContextLogin';
-// import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Form.style.css'
+import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 
 export default function FormComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
-    const { userInfo, handleLogin } = React.useContext(LoginContext);
+    const { handleLogin } = React.useContext(LoginContext);
     const url_To_Login = 'https://bordeable-api.onrender.com/users/SignIn';
     const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ export default function FormComponent() {
                 .then(result => {
                     console.log("Éxito:", result);
                     handleLogin(Username,result.data.token);
+                    navigate('/dashboard');
                 })
         } catch (error) {
             console.error('Error:', error);
@@ -47,26 +48,14 @@ export default function FormComponent() {
     };
 
 
-    function RedirectToNavigate(){
-        navigate('/dashboard');
-    }
-
-    React.useEffect(() => {
-        RedirectToNavigate();
-    }, [userInfo]);
-
     return (
         <>
             <form className='form'>
-                <div className='input-container'>
-                    <label className='label' htmlFor="username">Username</label>
-                    <input className='input-form' type="text" id="username" onChange={handleUsernameChange} />
-                </div>
+                
+                <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
 
-                <div className='input-container'>
-                    <label className='label' htmlFor="password">password</label>
-                    <input className='input-form' type="text" id="password" onChange={handlePasswordChange} />
-                </div>
+                <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
+                
 
                 <ButtonComponent text="Login" type="Primary" size="lg" _function={handleClick}></ButtonComponent>
 
