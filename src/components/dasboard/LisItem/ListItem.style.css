@@ -17,4 +17,11 @@
     font-style: normal;
     font-weight: bold;
     line-height: 28px; 
+
+    transition: 0.2s;
+}
+
+
+.list_tiem_container:hover{
+    transform: scale(1.05);
 }

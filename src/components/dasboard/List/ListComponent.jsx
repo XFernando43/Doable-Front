@@ -106,18 +106,16 @@ export default function ListComponent({title, _id}){
           }
           {
             inputActive && (
-              <>
+              <div className="addCard_container">
                 <InputFieldComponent idFor="Card Title" inputHandler={add} type="text" />
                 <div className="button_options">
                   <ButtonComponent text="Add Card" type="Primary" _function={PostCards}/>
                   <ButtonComponent text="Cancel" type="Secondary" _function={showInput}/>
                 </div>
-              </>
+              </div>
             )
           }
 
-          
-          
         </div>
     )
 }
