@@ -72,13 +72,13 @@ export default function ListBodyComponent(){
 
     return(
         <div className="lists_body_container">
-          <head className="list_head_container">
+          <div className="list_head_container">
             <TitleComponent text="My Boards title" size="md"/>
             <OptionsComponent click={ShowOptionsHandle} />
             {optionActive && (
                 <SelectOptionsComponent type="item" _function={deleteBoard}/>
             )}
-          </head>
+          </div>
 
           <div className="mainList_container">
               {

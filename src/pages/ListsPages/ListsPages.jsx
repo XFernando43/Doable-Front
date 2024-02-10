@@ -12,7 +12,6 @@ export default function ListPage(){
                 
                 <div className="main_contentList">
                     <ListBodyComponent/>
-                
                 </div>
 
             </ContextLogin>
