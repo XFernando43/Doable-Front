@@ -117,6 +117,7 @@ export default function ListComponent({title, _id}){
           }
 
         </div>
+
     )
 }
 
