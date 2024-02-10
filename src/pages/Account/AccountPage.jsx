@@ -9,7 +9,9 @@ export default function AccountPage(){
             <TopBarComponent/>
             <div className="account_container">
                 <TitleComponent text="My Account" size="md"/>
-                <FormAccountComponent/>
+                <div className="form_container">
+                    <FormAccountComponent/>
+                </div>
             </div>
         </ContextLogin>
         
