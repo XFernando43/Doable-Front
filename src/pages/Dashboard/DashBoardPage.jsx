@@ -3,7 +3,6 @@ import SelectComponent from "../../components/dasboard/SelectOrder/SelectCompone
 import ListBoardComponent from "../../components/dasboard/ListBoard/ListBoardComponent";
 import ContextLogin from "../../contexts/ContextLogin";
 import './Dashboard.style.css';
-
 export default function DashBoardPage(){
     return(
         <ContextLogin>
