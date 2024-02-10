@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;    
     max-width: auto;
+    /* width: 230px; */
     gap: 4px;   
     padding: var(--spacing-2, 8px);
     position: relative;

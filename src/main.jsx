@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     // ]
   },
   {
-    path:'/lists',
+    path:'/lists/:id',
     element: ListPage()
     // children: [
     //   { path: 'lists', element: <h1>HOPOLA</h1> }

@@ -4,15 +4,21 @@ import TitleComponent from "../../commons/Title/TitleComponent";
 import ColorModal from "../ColorModal/ColorModal";
 import './Board.style.css';
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function BoardComponent({ value, title, _id, color }){
     const [Title,SetTitle] = React.useState('');
     const [Color, setColor] = React.useState('');
     const [PickerVisible, SetPickerVisible] = React.useState(false);
+    const navigate = useNavigate();
 
     function handleSetPcikerVisible(){
         SetPickerVisible(!PickerVisible);
         console.log(Color);
+    }
+
+    function navigateToList(){
+        navigate(`/lists/${_id}`);
     }
 
     async function PostNewBoard() {
@@ -86,7 +92,7 @@ export default function BoardComponent({ value, title, _id, color }){
                     
                 </div>
             ) : (
-                <button className="board_button">
+                <button className="board_button" onClick={navigateToList}>
                     <div className='card_container align-center board_created' style={background_color}>
                     <TitleComponent text={title} size="smm"/>
                     </div>

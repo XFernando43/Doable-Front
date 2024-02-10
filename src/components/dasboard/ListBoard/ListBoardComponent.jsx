@@ -38,11 +38,10 @@ export default function ListBoardComponent(){
     return (
         <div className='listBoard_container'>
             <BoardComponent value="1"/>
-            
             {
-                Boards.map(board => (
-                    <BoardComponent title={board.board_name} color={board.board_color} key={board.board_id}/>
-                ))
+              Boards.map(board => (
+                  <BoardComponent title={board.board_name} color={board.board_color} key={board.board_id} _id={board.board_id}/>
+              ))
             }
                    
 

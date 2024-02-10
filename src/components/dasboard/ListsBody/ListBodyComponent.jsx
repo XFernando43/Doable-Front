@@ -1,12 +1,16 @@
 import ListComponent from "../List/ListComponent"
-import React from "react";
+import React, { useId } from "react";
 import './ListBody.style.css'
+import { useParams } from "react-router-dom";
 export default function ListBodyComponent(){
     const [Listas, setListas] = React.useState([]);
-
+    const listId = useId();
+    const { id } = useParams();
+    
     async function getListas() {
-    const token = localStorage.getItem('token');
-        const API = `https://bordeable-api.onrender.com/lists/getLists/1`;
+
+        const token = localStorage.getItem('token');
+        const API = `https://bordeable-api.onrender.com/lists/getLists/${id}`;
         // const API = `https://bordeable-api.onrender.com/lists/getLists/${id}`;
         try {
           const response = await fetch(API, {
@@ -31,14 +35,14 @@ export default function ListBodyComponent(){
 
     React.useEffect(()=>{
         getListas();
-    },[])
+    },[id])
 
     return(
         <div className="lists_container">
 
             {
                 Listas.map(lista => (
-                     <ListComponent title={lista.list_name} key={lista.list_id}/>
+                     <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
                 ))
             }
         </div>
