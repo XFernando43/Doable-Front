@@ -6,6 +6,7 @@ import ListPage from './pages/ListsPages/ListsPages.jsx'
 import LoginPage from './pages/Login/LoginPage.jsx'
 import DashBoardPage from './pages/Dashboard/DashBoardPage.jsx'
 import signupPage from './pages/SignUp/SignUpPage.jsx'
+import AccountPage from './pages/Account/AccountPage.jsx'
 import './index.css'; 
 
 const router = createBrowserRouter([
@@ -34,6 +35,13 @@ const router = createBrowserRouter([
   {
     path:'/signup',
     element: signupPage()
+    // children: [
+    //   { path: 'lists', element: <h1>HOPOLA</h1> }
+    // ]
+  },
+  {
+    path:'/account',
+    element: AccountPage()
     // children: [
     //   { path: 'lists', element: <h1>HOPOLA</h1> }
     // ]
