@@ -14,7 +14,12 @@ export default function ListPage(){
                 <div className="listPageContainer">
                     <div className="main_contentList">
                         <TitleComponent text="My Boards title" size="md"/>
-                        <ListComponent title="to-do"/>
+                        <div className="lists_container">
+                            <ListComponent title="to-do"/>
+                            <ListComponent title="to-do"/>
+                            <ListComponent title="to-do"/>
+                            <ListComponent title="to-do"/>
+                        </div>
 
                     </div>
                 </div>
