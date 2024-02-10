@@ -1,7 +1,8 @@
 import ListComponent from "../List/ListComponent"
+import CreateListForm from "../CreateListForm/CreateListForm";
 import React from "react";
-import './ListBody.style.css'
 import { useParams } from "react-router-dom";
+import './ListBody.style.css'
 export default function ListBodyComponent(){
     const [Listas, setListas] = React.useState([]);
     const { id } = useParams();
@@ -40,8 +41,11 @@ export default function ListBodyComponent(){
           {
             Listas.map(lista => (
               <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
-            ))
-          }
+              ))
+            }
+
+          <CreateListForm title="List Title" _id="1" />
+
 
         </div>
     )

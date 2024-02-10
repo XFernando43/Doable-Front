@@ -1,0 +1,110 @@
+.CreateList_container{
+    display: flex;
+    width: 280px;
+    padding: var(--spacing-2, 8px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2, 8px);
+    border-radius: var(--rounded-md, 6px);
+    background: var(--muted, #F5F5F5);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.CreateList_header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2, 8px);
+    align-self: stretch;
+}
+/* .list_header{
+    display: flex;
+    padding: 0px var(--spacing-2, 8px);
+    align-items: center;
+    gap: 4px;
+    justify-content: space-between;
+    width: 280px;
+
+}
+
+.button_options{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.addCard_container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: var(--spacing-2, 8px);
+    align-items: flex-start;
+    width: 280px;
+    border-radius: var(--rounded-md, 6px);
+    background: var(--background, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.prueba1_{
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2, 8px);
+    gap: 8px;
+    align-items: flex-start;
+    border-radius: var(--rounded-md, 6px);
+    background: var(--muted, #F5F5F5);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+    
+}
+
+.prueba1_header{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
