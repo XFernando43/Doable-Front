@@ -86,9 +86,11 @@ export default function BoardComponent({ value, title, _id, color }){
                     
                 </div>
             ) : (
-                <div className='card_container align-center board_created' style={background_color}>
-                   <TitleComponent text={title} size="smm"/>
-                </div>
+                <button className="board_button">
+                    <div className='card_container align-center board_created' style={background_color}>
+                    <TitleComponent text={title} size="smm"/>
+                    </div>
+                </button>
             )}
         </>
     );
