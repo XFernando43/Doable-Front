@@ -1,30 +1,25 @@
-.listPageContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start !important;
-    justify-content: center;
-    gap: var(--spacing-8, 32px);
-    padding: var(--spacing-24, 96px) 0px var(--spacing-24, 440px) 0px;
-    background-color: #FECACA;
-    
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
+* {
+    margin: 0;
+}
+  
 
 .main_contentList{
     display: flex;
     flex-direction: column;
-    width: 1440px;
+    width: auto;
     padding: 0px var(--spacing-4, 16px);
     align-items: flex-start;
     gap: var(--spacing-8, 32px);
     margin-inline: auto;
     height: 100vh;
-    /* background-color: aquamarine; */
+    background-color: #FECACA;
 }
 
 
-.prueba{
-    width: 400px;
-    background-color: red;
-    display: flex;
-    flex-direction: column;
-}
