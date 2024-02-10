@@ -10,9 +10,8 @@ export default function ListPage(){
             <ContextLogin>  
                 <TopBarComponent></TopBarComponent>
                 
-                <div className="main_contentList">
-                    <ListBodyComponent/>
-                </div>
+                <ListBodyComponent/>
+               
 
             </ContextLogin>
     
