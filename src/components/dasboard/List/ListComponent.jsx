@@ -16,6 +16,31 @@ export default function ListComponent({title, _id}){
       setInputActive(!inputActive);
     }
 
+    async function deleteList(){
+      const url = `https://bordeable-api.onrender.com/lists/${_id}`;
+      const token = localStorage.getItem('token');
+      
+      try {
+          const response = await fetch(url, {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              }
+          });
+          if (response.ok) {
+              const data = await response.json();
+              console.log('List created successfully:', data);
+          } else {
+              console.error('Failed to create list:', response.statusText);
+          }
+      } catch (error) {
+          console.error('Error creating List:', error);
+      } 
+
+      ShowOptionsHandle();
+  }
+
     async function getCards() {
         const token = localStorage.getItem('token');
         // const API = `https://bordeable-api.onrender.com/cards/getCards/10`;
@@ -89,12 +114,12 @@ export default function ListComponent({title, _id}){
               <TitleComponent text={title} />
               <OptionsComponent click={ShowOptionsHandle}/>
               {optionActive && (
-                  <SelectOptionsComponent type="list"/>
+                  <SelectOptionsComponent type="list" _function={deleteList}/>
               )}
           </div>
           {
              CardArray.map((card) => (
-              <ListItemComponent key={card.id} text={card.card_title} />
+              <ListItemComponent key={card.id} text={card.card_title} _id = {card.card_id} />
             ))
           }
 
