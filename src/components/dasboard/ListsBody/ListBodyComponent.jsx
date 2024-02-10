@@ -36,7 +36,7 @@ export default function ListBodyComponent(){
     },[id])
 
     return(
-        <div className="lists_container">
+        <div className="lists_body_container">
           {
             Listas.map(lista => (
               <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>

@@ -5,9 +5,15 @@ import TitleComponent from "../Title/TitleComponent"
 
 import './TopBar.style.css'
 import { LoginContext } from "../../../contexts/ContextLogin"
+import { useNavigate } from "react-router-dom"
 
 export default function TopBarComponent(){
     const {handleLogout} = useContext(LoginContext)
+    const navigate = useNavigate();
+
+    function NavigateToAccount(){
+        navigate('/account');
+    }
 
     return(
         <header className="header">
@@ -22,7 +28,7 @@ export default function TopBarComponent(){
             </div>
 
             <div className="items-group">
-                <ButtonComponent text="My Account" type="Secondary"/>
+                <ButtonComponent text="My Account" type="Secondary" _function={NavigateToAccount}/>
                 <ButtonComponent text="Logout" type="LogOut" _function={handleLogout}/>
                 {/* <ButtonComponent text="Delete My account" type="Danger"/> */}
             </div>
