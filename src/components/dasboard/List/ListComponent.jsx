@@ -3,11 +3,18 @@ import React from 'react';
 import OptionsComponent from "../Options/OptionsComponent";
 import ListItemComponent from "../LisItem/ListItemComponent";
 import SelectOptionsComponent from "../Options/selectOptions/SelectOptionsComponent";
+import ButtonComponent from "../../commons/Button/ButtonComponent";
+import InputFieldComponent from "../../commons/InputFIelds/FieldComponent";
 import './List.style.css';
-
 export default function ListComponent({title, _id}){
     const [optionActive, SetOptionActive] = React.useState(false);
     const [CardArray, SetCardArray] = React.useState([]);
+    const [inputActive, setInputActive] = React.useState(false); 
+    const [cardName, SetCardName] = React.useState('');
+
+    function showInput(){
+      setInputActive(!inputActive);
+    }
 
     async function getCards() {
         const token = localStorage.getItem('token');
@@ -34,8 +41,42 @@ export default function ListComponent({title, _id}){
         }
     }
 
+    async function PostCards(){
+      const url = `https://bordeable-api.onrender.com/cards/${_id}`;
+      const token = localStorage.getItem('token');
+    
+      const boardData = {
+        card_title: cardName,
+      };
+    
+      try {
+          const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify(boardData)
+          });
+  
+          if (response.ok) {
+              const data = await response.json();
+              console.log('Card created successfully:', data);
+              showInput()
+          } else {
+              console.error('Failed to create board:', response.statusText);
+          }
+      } catch (error) {
+          console.error('Error creating board:', error);
+      } 
+    }
+
     function ShowOptionsHandle(){
         SetOptionActive(!optionActive);
+    }
+
+    function add(event){
+      SetCardName(event.target.value);
     }
 
     React.useEffect(()=>{
@@ -44,19 +85,40 @@ export default function ListComponent({title, _id}){
 
     return(
         <div className="list_container">
-            <div className="list_header">
-                <TitleComponent text={title} />
-                <OptionsComponent click={ShowOptionsHandle}/>
-                {optionActive && (
-                    <SelectOptionsComponent type="list"/>
-                )}
-            </div>
-            {
-               CardArray.map((card) => (
-                <ListItemComponent key={card.id} text={card.card_title} />
-              ))
-            }
+          <div className="list_header">
+              <TitleComponent text={title} />
+              <OptionsComponent click={ShowOptionsHandle}/>
+              {optionActive && (
+                  <SelectOptionsComponent type="list"/>
+              )}
+          </div>
+          {
+             CardArray.map((card) => (
+              <ListItemComponent key={card.id} text={card.card_title} />
+            ))
+          }
 
+          {
+            !inputActive && (
+              <ButtonComponent text="+ Add Card" type="Secondary flex-start" _function={showInput}
+              />
+            )
+          }
+          {
+            inputActive && (
+              <>
+                <InputFieldComponent idFor="Card Title" inputHandler={add} type="text" />
+                <div className="button_options">
+                  <ButtonComponent text="Add Card" type="Primary" _function={PostCards}/>
+                  <ButtonComponent text="Cancel" type="Secondary" _function={showInput}/>
+                </div>
+              </>
+            )
+          }
+
+          
+          
         </div>
     )
 }
+

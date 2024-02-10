@@ -20,3 +20,9 @@
     gap: 4px;
     justify-content: space-between;
 }
+
+.button_options{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}

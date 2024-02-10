@@ -7,8 +7,7 @@ import './ListPage.style.css';
 export default function ListPage(){
     return (
         <>
-            <ContextLogin>
-    
+            <ContextLogin>  
                 <TopBarComponent></TopBarComponent>
                 <div className="listPageContainer">
                     <div className="main_contentList">
