@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import ListPage from './pages/ListsPages/ListsPages.jsx'
 import LoginPage from './pages/Login/LoginPage.jsx'
 import DashBoardPage from './pages/Dashboard/DashBoardPage.jsx'
+import signupPage from './pages/SignUp/SignUpPage.jsx'
 import './index.css'; 
 
 const router = createBrowserRouter([
@@ -26,6 +27,13 @@ const router = createBrowserRouter([
   {
     path:'/lists/:id',
     element: ListPage()
+    // children: [
+    //   { path: 'lists', element: <h1>HOPOLA</h1> }
+    // ]
+  },
+  {
+    path:'/signup',
+    element: signupPage()
     // children: [
     //   { path: 'lists', element: <h1>HOPOLA</h1> }
     // ]
