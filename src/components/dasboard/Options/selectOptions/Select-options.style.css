@@ -7,7 +7,9 @@
     border-radius: var(--rounded-md, 6px);
     background: var(--background, #FFF);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
-    position: absolute;
+    
+    
+
     z-index: 1000; 
 }
 
@@ -31,10 +33,15 @@
 .item-component{
     right: -36px;
     bottom: -56px;
+    position: absolute;
 }
 
 .list-component{
-    right: -36px;
-    /* bottom: 300px; */
+    /* 
+    left: calc(100% - 40px);
+    bottom: 120px;  */
+    
+    position: absolute; 
+    right: -75px;
     bottom: 20px; 
 }

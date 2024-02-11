@@ -14,7 +14,6 @@ export default function ListComponent({title, _id}){
   const [cardName, SetCardName] = React.useState('');
   const [optionActive, SetOptionActive] = React.useState(false);
   const [inputActive, setInputActive] = React.useState(false); 
-  const [refres, setrefresh] = React.useState(false);
   
   const [EditListTitle, setEditListTitle] = React.useState(false);
   const [ListTitle, setListTitle] = React.useState('');
@@ -97,7 +96,6 @@ export default function ListComponent({title, _id}){
           if (response.ok) {
             const data = await response.json();
             SetCardArray(data.cards);
-            setrefresh(!refres);
 
           } 
         } catch (error) {
@@ -145,7 +143,7 @@ export default function ListComponent({title, _id}){
 
     React.useEffect(()=>{
       getCards();
-    },[refres])
+    },[CardArray])
 
     return(
         <div className="list_container">
