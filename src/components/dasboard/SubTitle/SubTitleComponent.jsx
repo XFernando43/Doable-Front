@@ -2,11 +2,13 @@ import './SubTitle.style.css'
 import ButtonComponent from '../../commons/Button/ButtonComponent';
 import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 import React from 'react';
+import ColorModal from '../ColorModal/ColorModal';
 import { useParams } from 'react-router-dom';
 export default function SubTitleComponent({text,size, change}){
     const classValue = `SubTitle ${size}`;
     const [BoardTitle, SetBoardTitle] = React.useState('');
-    
+    const [Color, SetColor] = React.useState('');
+
     const {id} = useParams();
 
     async function editBoard(){
@@ -16,6 +18,7 @@ export default function SubTitleComponent({text,size, change}){
 
         const data={
             "name":BoardTitle,
+            "color":Color
         }
 
         try {
@@ -46,6 +49,7 @@ export default function SubTitleComponent({text,size, change}){
                 <div className='BoardSubtitle_container'>
                     <InputFieldComponent idFor="Board Title" inputHandler={(event)=> {SetBoardTitle(event.target.value)}} type={"text"}/>
                     <ButtonComponent text ="Edit Card" type = "Primary" _function = {editBoard} />
+                    <ColorModal Color = {Color} SetColor = {SetColor} />
                 </div>
 
             )
