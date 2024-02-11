@@ -26,8 +26,6 @@ const ContextLogin = ({ children }) => {
 
   function isLogin_To_Redirect(page, condicion){
     const _isLogin = localStorage.getItem('isLogin');
-    console.log(_isLogin);
-    console.log(typeof(_isLogin));
     if(_isLogin === condicion){
       navigate(`/${page}`);
     }

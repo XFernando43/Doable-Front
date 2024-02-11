@@ -6,20 +6,22 @@ import React from "react";
 import SubTitleComponent from "../SubTitle/SubTitleComponent";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import './ListBody.style.css'
 import { LoginContext } from "../../../contexts/ContextLogin";
+import './ListBody.style.css'
+
+
 export default function ListBodyComponent(){
+  const navigate = useNavigate();
+  const { id } = useParams();
+
     let [color, setColor] = React.useState('');
     const [Board, SetBoard] = React.useState('');
-    const [optionActive, SetOptionActive] = React.useState(false);
     const [Listas, setListas] = React.useState([]);
-    const [refres, setrefresh] = React.useState(false);
     const {isLogin_To_Redirect} = React.useContext(LoginContext);
+    const [optionActive, SetOptionActive] = React.useState(false);
     
-    const navigate = useNavigate();
-    const { id } = useParams();
-  
     const [changeBoardTitle, setchangeBoardTitle] = React.useState(false);
+    
 
     function _setChangeBoardTitle(){
       setchangeBoardTitle(!changeBoardTitle);
@@ -38,8 +40,6 @@ export default function ListBodyComponent(){
         });
         if (response.ok) {
           const data = await response.json();
-          console.log("HER -->",data.board[0].board_name);
-          console.log("HER -->",data.board[0].board_color);
           SetBoard(data.board[0].board_name);
           setColor(data.board[0].board_color);
           
@@ -68,7 +68,6 @@ export default function ListBodyComponent(){
           if (response.ok) {
             const data = await response.json();
             setListas(data.lists);
-            setrefresh(!refres);
           } 
         } catch (error) {
           console.error("Error: ", error);
@@ -104,30 +103,32 @@ export default function ListBodyComponent(){
         isLogin_To_Redirect("login","false");
         getListas();
         getBoard();
-    },[refres])
+    },[Listas])
 
     const _background = {
       "background-color": color
     }
 
+  
+
     return(
       <div className="main_contentList" style={_background}>
         <div className="lists_body_container">
           <div className="list_head_container">
-            {/* <TitleComponent text="Ramon" size="md"/> */}
+            
             <SubTitleComponent text={Board} size="md" change={changeBoardTitle}/>
+
             <OptionsComponent click={ShowOptionsHandle} />
             {optionActive && (
               <SelectOptionsComponent type="item" _function={deleteBoard} _function2={_setChangeBoardTitle}/>
             )}
           </div>
-
           <div className="mainList_container">
               {
                 Listas.map(lista => (
                   <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
                   ))
-                }
+              }
 
             <CreateListForm title="List Title" _id="1" />
           </div>

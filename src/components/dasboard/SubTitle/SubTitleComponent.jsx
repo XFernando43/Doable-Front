@@ -12,7 +12,6 @@ export default function SubTitleComponent({text,size, change}){
     const {id} = useParams();
 
     async function editBoard(){
-        // const url = `https://bordeable-api.onrender.com/cards/${_id}`;
         const url = `https://bordeable-api.onrender.com/board/${id}`;
         const token = localStorage.getItem('token');
 

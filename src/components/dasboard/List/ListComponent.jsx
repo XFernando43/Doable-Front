@@ -6,49 +6,86 @@ import SelectOptionsComponent from "../Options/selectOptions/SelectOptionsCompon
 import ButtonComponent from "../../commons/Button/ButtonComponent";
 import InputFieldComponent from "../../commons/InputFIelds/FieldComponent";
 import './List.style.css';
+
+
+
 export default function ListComponent({title, _id}){
-    const [optionActive, SetOptionActive] = React.useState(false);
-    const [CardArray, SetCardArray] = React.useState([]);
-    const [inputActive, setInputActive] = React.useState(false); 
-    const [cardName, SetCardName] = React.useState('');
-    const [refres, setrefresh] = React.useState(false);
-    
+  const [CardArray, SetCardArray] = React.useState([]);
+  const [cardName, SetCardName] = React.useState('');
+  const [optionActive, SetOptionActive] = React.useState(false);
+  const [inputActive, setInputActive] = React.useState(false); 
+  const [refres, setrefresh] = React.useState(false);
+  
+  const [EditListTitle, setEditListTitle] = React.useState(false);
+  const [ListTitle, setListTitle] = React.useState('');
 
+  function editListTitleActive(){
+    setEditListTitle(!EditListTitle);
+  }
 
-    function showInput(){
-      setInputActive(!inputActive);
+  function showInput(){
+    setInputActive(!inputActive);
+  }
+
+  async function EditListTitleHandler(){
+    const url = `https://bordeable-api.onrender.com/lists/${_id}`;
+    const token = localStorage.getItem('token');
+
+    const data = {
+        "list_name": ListTitle, 
+        "order": "1" 
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const responseData = await response.json();
+            console.log('List updated successfully:', responseData);
+            editListTitleActive();
+        } else {
+            console.error('Failed to update list:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error updating list:', error);
     }
 
-    async function deleteList(){
-      const url = `https://bordeable-api.onrender.com/lists/${_id}`;
-      const token = localStorage.getItem('token');
-      
-      try {
-          const response = await fetch(url, {
-              method: 'DELETE',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`
-              }
-          });
-          if (response.ok) {
-              const data = await response.json();
-              console.log('List created successfully:', data);
-          } else {
-              console.error('Failed to create list:', response.statusText);
-          }
-      } catch (error) {
-          console.error('Error creating List:', error);
-      } 
+  }
 
-      ShowOptionsHandle();
+  async function deleteList(){
+    const url = `https://bordeable-api.onrender.com/lists/${_id}`;
+    const token = localStorage.getItem('token');
+    
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.ok) {
+            const data = await response.json();
+            console.log('List created successfully:', data);
+        } else {
+            console.error('Failed to create list:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error creating List:', error);
+    } 
+    ShowOptionsHandle();
   }
 
     async function getCards() {
         const token = localStorage.getItem('token');
-        // const API = `https://bordeable-api.onrender.com/cards/getCards/10`;
         const API = `https://bordeable-api.onrender.com/cards/getCards/${_id}`;
-        console.log(API);
         try {
           const response = await fetch(API, {
             method: "GET",
@@ -113,10 +150,34 @@ export default function ListComponent({title, _id}){
     return(
         <div className="list_container">
           <div className="list_header">
-              <TitleComponent text={title} />
+
+              
+
+              {
+                EditListTitle === true && (
+                  <div className="editListTitle_container">
+                    <InputFieldComponent idFor="Card Title" inputHandler={(event)=>{setListTitle(event.target.value)}} type="text" />
+                    {/* <ButtonComponent text="Edit List" type="Primary" _function={} /> */}
+                    <ButtonComponent text="Edit List" type="Primary" _function={EditListTitleHandler} />
+                  </div>
+
+                )
+              }
+
+              {
+                EditListTitle === false && (
+                  <TitleComponent text={title} />
+
+                )
+              }
+
+
+
+
+
               <OptionsComponent click={ShowOptionsHandle}/>
               {optionActive && (
-                <SelectOptionsComponent type="list" _function={deleteList}/>
+                <SelectOptionsComponent type="list" _function={deleteList} _function2={editListTitleActive}/>
               )}
           </div>
           {
@@ -142,9 +203,7 @@ export default function ListComponent({title, _id}){
               </div>
             )
           }
-
         </div>
-
     )
 }
 

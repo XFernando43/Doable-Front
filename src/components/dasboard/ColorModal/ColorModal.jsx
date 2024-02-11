@@ -1,21 +1,10 @@
 import './ColorModal.style.css';
 
-function ColorModal({ Color, SetColor, id, changeColorApi } ) {
-  // const handleRectClick = (event) => {
-  //   if (event.target.tagName === "rect") {
-  //     const fillColor = event.target.getAttribute("fill");
-  //     SetColor(Color = fillColor)
-  //     console.log(Color)
-  //   }
-  // };
+function ColorModal({ Color, SetColor, id } ) {
   
-  // function changeColor(color,idNote){
-  //   SetColor(Color = color);
-  //   changeColorApi(color, idNote);
-  // }
   function changeColor(color){
     SetColor(Color = color);
-    // changeColorApi(color, idNote);
+    console.log(Color);
   }
 
   return (
@@ -36,13 +25,13 @@ function ColorModal({ Color, SetColor, id, changeColorApi } ) {
           fill="white"
           stroke="#999B9E"
           onClick={()=>{
-            changeColorApi("#999B9E", id)
+            changeColor("#999B9E", id)
           }}
         />
         <rect x="30" width="25" height="25" rx="12.5" fill="#F28B82"
-                  onClick={()=>{
-                    changeColor("#F28B82",id);
-                  }} />
+          onClick={()=>{
+            changeColor("#F28B82",id);
+          }} />
         <rect x="60" width="25" height="25" rx="12.5" fill="#FBBC04"
           onClick={()=>{
             changeColor("#FBBC04",id);

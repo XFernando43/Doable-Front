@@ -7,8 +7,6 @@
     gap: var(--spacing-8, 32px);
     margin-inline: auto;
     height: 100vh;
-    /* background-color: aqua; */
-    /* background-color: #FECACA; */
 }
 
 .lists_body_container{
@@ -16,7 +14,7 @@
     align-items: flex-start;
     gap: var(--spacing-8, 32px);
     flex-direction: column;
-    width: 1440px;
+    width: 1280px;
     margin-inline: auto;
     padding: var(--spacing-4, 16px) 0px;
 
