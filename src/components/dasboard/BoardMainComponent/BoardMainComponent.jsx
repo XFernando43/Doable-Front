@@ -30,7 +30,7 @@ export default function BoardMainComponent(){
           console.error("Error: ", error);
         }
     }
-
+    
     function sortBoards(orderBy) {
         let sortedBoards;
         switch (orderBy) {
