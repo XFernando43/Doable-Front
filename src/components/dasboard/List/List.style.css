@@ -21,16 +21,6 @@
     padding: 8px;
 }
 
-.list_header{
-    display: flex;
-    padding: 0px var(--spacing-2, 8px);
-    align-items: center;
-    gap: 4px;
-    justify-content: space-between;
-    width: 280px;
-
-}
-
 .button_options{
     display: flex;
     flex-direction: row;

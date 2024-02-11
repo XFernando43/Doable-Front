@@ -78,7 +78,6 @@ export default function ListItemComponent({text, _id}){
 
     return (
         <>
-        
             {
                 InputEdit === true &&(
                     <div className='editCard_container'> 
@@ -98,8 +97,6 @@ export default function ListItemComponent({text, _id}){
                     )}
                 </div>
             )}    
-
-
         </>
     )
 }

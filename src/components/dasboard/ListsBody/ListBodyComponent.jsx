@@ -119,11 +119,10 @@ function ListBodyComponent(){
             {
               Listas.map(lista => (
                 <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
-                ))
+              ))
             }
           <CreateListForm title="List Title" _id="1" />
         </div>
-        
       </div>
     </div>
   )
