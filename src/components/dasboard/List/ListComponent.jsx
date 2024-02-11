@@ -12,6 +12,9 @@ export default function ListComponent({title, _id}){
     const [inputActive, setInputActive] = React.useState(false); 
     const [cardName, SetCardName] = React.useState('');
 
+    
+
+
     function showInput(){
       setInputActive(!inputActive);
     }
@@ -45,6 +48,7 @@ export default function ListComponent({title, _id}){
         const token = localStorage.getItem('token');
         // const API = `https://bordeable-api.onrender.com/cards/getCards/10`;
         const API = `https://bordeable-api.onrender.com/cards/getCards/${_id}`;
+        console.log(API);
         try {
           const response = await fetch(API, {
             method: "GET",
@@ -97,7 +101,7 @@ export default function ListComponent({title, _id}){
     }
 
     function ShowOptionsHandle(){
-        SetOptionActive(!optionActive);
+      SetOptionActive(!optionActive);
     }
 
     function add(event){
@@ -114,12 +118,12 @@ export default function ListComponent({title, _id}){
               <TitleComponent text={title} />
               <OptionsComponent click={ShowOptionsHandle}/>
               {optionActive && (
-                  <SelectOptionsComponent type="list" _function={deleteList}/>
+                <SelectOptionsComponent type="list" _function={deleteList}/>
               )}
           </div>
           {
              CardArray.map((card) => (
-              <ListItemComponent key={card.id} text={card.card_title} _id = {card.card_id} />
+              <ListItemComponent key={card.id} text={card.card_title} _id = {card.card_id}/>
             ))
           }
 

@@ -21,6 +21,16 @@
     transition: 0.2s;
 }
 
+.editCard_container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: var(--rounded-md, 6px);
+    border: 1px solid var(--border, #D4D4D4);
+    background: var(--background, #FFF);
+    padding: 8px;
+    width: 280px;
+}
 
 /* .list_tiem_container:hover{
     transform: scale(1.05);
