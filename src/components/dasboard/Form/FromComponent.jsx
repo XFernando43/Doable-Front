@@ -20,22 +20,24 @@ export default function FormComponent() {
         };
 
         try {
-            await fetch(url_To_Login, {
-                method: "POST",
+            const response = await fetch(url_To_Login, {
+                method: 'POST',
                 headers: { "Content-Type": "application/json", },
                 body: JSON.stringify(data)
-            }).then(response => response.json())
-                .then(result => {
-                    if(result.ok){
-                        console.log("Éxito:", result);
-                        handleLogin(Username,result.data.token);
-                        navigate('/dashboard');
-                    }else{
-                        setLoginFail(true);
-                    }
-                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log('User loged successfully:', data);
+                handleLogin(Username,data.data.token);
+                navigate('/dashboard');
+            } else {
+                setLoginFail(true);
+                console.error('Failed to login:', response.statusText);
+            }
+
         } catch (error) {
             console.error('Error:', error);
+            setLoginFail(false);
         }
     }
 
@@ -63,7 +65,6 @@ export default function FormComponent() {
                 {
                     LoginFail === true &&(
                         <p className='message_erro'>Error en el usuario o contraseña</p>
-                        
                         )
                 }
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
