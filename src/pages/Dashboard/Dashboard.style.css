@@ -1,6 +1,6 @@
 .main_content{
     display: flex;
-    width: 100vh;
+    width: 1280px;
     flex-direction: column;
     margin-inline: auto;
 }

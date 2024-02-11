@@ -51,7 +51,6 @@ export default function SubTitleComponent({text,size, change}){
                     <ButtonComponent text ="Edit Card" type = "Primary" _function = {editBoard} />
                     <ColorModal Color = {Color} SetColor = {SetColor} />
                 </div>
-
             )
         }
         {
