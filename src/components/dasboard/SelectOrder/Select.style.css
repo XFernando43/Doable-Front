@@ -34,13 +34,13 @@
 
 .selector option {
     padding: 8px;
-    background-color: #FFF; /* Color de fondo */
-    color: #000; /* Color del texto */
-    border: none; /* Elimina el borde */
-    outline: none; /* Elimina el resaltado al seleccionar */
+    background-color: #FFF; 
+    color: #000; 
+    border: none; 
+    outline: none; 
 }
 
-/* Estilos para el hover y la selección */
+
 .selector option:hover {
     background-color: #F0F0F0;
 }

@@ -9,6 +9,49 @@ export default function ListBoardComponent(){
     const [refres, setrefresh] = React.useState(false);
     const { isLogin_To_Redirect } = React.useContext(LoginContext);
     
+    function sortBoards(orderBy) {
+      let sortedBoards;
+      switch (orderBy) {
+        case "date":
+          sortedBoards = [...Boards].sort((a, b) => {
+            const dateA = new Date(a.createdat);
+            const dateB = new Date(b.createdat);
+            return dateA - dateB;
+          });
+          break;
+        case "dateDesc":
+          sortedBoards = [...Boards].sort((a, b) => {
+            const dateA = new Date(a.createdat);
+            const dateB = new Date(b.createdat);
+            return dateB - dateA;
+          });
+          break;
+        case "nameAsc":
+          sortedBoards = [...Boards].sort((a, b) => {
+            const nameA = a.board_name.toLowerCase();
+            const nameB = b.board_name.toLowerCase();
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0;
+          });
+          break;
+        case "nameDesc":
+          sortedBoards = [...Boards].sort((a, b) => {
+            const nameA = a.board_name.toLowerCase();
+            const nameB = b.board_name.toLowerCase();
+            if (nameA < nameB) return 1;
+            if (nameA > nameB) return -1;
+            return 0;
+          });
+          break;
+        default:
+          sortedBoards = [...Boards];
+      }
+      setBoards(sortedBoards);
+    }
+    
+    
+
 
     async function getBoards() {
         const token = localStorage.getItem('token');
@@ -25,6 +68,7 @@ export default function ListBoardComponent(){
             const data = await response.json();
             setBoards(data.boards);
             setrefresh(!refres);
+            // console.log(Boards);
           }
         } catch (error) {
           console.error("Error: ", error);
@@ -34,8 +78,7 @@ export default function ListBoardComponent(){
     React.useEffect(()=>{
         isLogin_To_Redirect("login","false");
         getBoards();
-        console.log(Boards);
-    },[refres]);
+    },[]);
 
 
     return (
@@ -47,6 +90,9 @@ export default function ListBoardComponent(){
               ))
             }
                    
+            <button onClick={()=>{sortBoards("date")}}>ordernar fecha</button>
+            <button onClick={()=>{sortBoards("nameAsc")}}>ordernar asc</button>
+            <button onClick={()=>{sortBoards("nameDesc")}}>ordernar desc</button>
 
         </div>
     )
