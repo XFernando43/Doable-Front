@@ -4,11 +4,10 @@ import './ListItem.style.css';
 import SelectOptionsComponent from '../Options/selectOptions/SelectOptionsComponent';
 import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 import ButtonComponent from '../../commons/Button/ButtonComponent';
-export default function ListItemComponent({text, _id}){
-    const [optionActive, SetOptionActive] = React.useState(false);
-    
-    const [InputEdit, setInputEdit] = React.useState(false);
 
+export default function ListItemComponent({text, _id}){
+    const [optionActive, SetOptionActive] = React.useState(false);    
+    const [InputEdit, setInputEdit] = React.useState(false);
     const [TitleEdited, setTitleEdited] = React.useState('');
 
 
