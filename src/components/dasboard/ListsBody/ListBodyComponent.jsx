@@ -1,4 +1,4 @@
-import ListComponent from "../List/ListComponent"
+import ArryListComponent from "../List/ArrayListComponent";
 import CreateListForm from "../CreateListForm/CreateListForm";
 import OptionsComponent from "../Options/OptionsComponent";
 import SelectOptionsComponent from "../Options/selectOptions/SelectOptionsComponent";
@@ -10,7 +10,7 @@ import { LoginContext } from "../../../contexts/ContextLogin";
 import './ListBody.style.css'
 
 
-export default function ListBodyComponent(){
+function ListBodyComponent(){
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -46,7 +46,8 @@ export default function ListBodyComponent(){
           }else{
             setColor(data.board[0].board_color);
           }
-          
+          console.log(data);
+
         } 
       } catch (error) {
         console.error("Error: ", error);
@@ -125,7 +126,7 @@ export default function ListBodyComponent(){
           <div className="mainList_container">
               {
                 Listas.map(lista => (
-                  <ListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
+                  <ArryListComponent title={lista.list_name} _id={lista.list_id} key={lista.list_id}/>
                   ))
               }
 
@@ -135,3 +136,5 @@ export default function ListBodyComponent(){
     </div>
     )
 }
+
+export default React.memo(ListBodyComponent);

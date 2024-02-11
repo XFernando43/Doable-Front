@@ -9,14 +9,14 @@ import './List.style.css';
 
 
 
-export default function ListComponent({title, _id}){
+function ArryListComponent({title, _id}){
   const [CardArray, SetCardArray] = React.useState([]);
   const [cardName, SetCardName] = React.useState('');
+  const [ListTitle, setListTitle] = React.useState('');
+  
   const [optionActive, SetOptionActive] = React.useState(false);
   const [inputActive, setInputActive] = React.useState(false); 
-  
   const [EditListTitle, setEditListTitle] = React.useState(false);
-  const [ListTitle, setListTitle] = React.useState('');
 
   function editListTitleActive(){
     setEditListTitle(!EditListTitle);
@@ -149,13 +149,10 @@ export default function ListComponent({title, _id}){
         <div className="list_container">
           <div className="list_header">
 
-              
-
               {
                 EditListTitle === true && (
                   <div className="editListTitle_container">
                     <InputFieldComponent idFor="Card Title" inputHandler={(event)=>{setListTitle(event.target.value)}} type="text" />
-                    {/* <ButtonComponent text="Edit List" type="Primary" _function={} /> */}
                     <ButtonComponent text="Edit List" type="Primary" _function={EditListTitleHandler} />
                   </div>
 
@@ -168,10 +165,6 @@ export default function ListComponent({title, _id}){
 
                 )
               }
-
-
-
-
 
               <OptionsComponent click={ShowOptionsHandle}/>
               {optionActive && (
@@ -205,3 +198,5 @@ export default function ListComponent({title, _id}){
     )
 }
 
+export default React.memo(ArryListComponent);
+// export default ArryListComponent;
