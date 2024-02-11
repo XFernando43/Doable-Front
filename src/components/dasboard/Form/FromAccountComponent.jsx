@@ -1,6 +1,5 @@
 import React from 'react'
 import ButtonComponent from '../../commons/Button/ButtonComponent'
-import { useNavigate } from 'react-router-dom';
 import './Form.style.css'
 import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 import { LoginContext } from '../../../contexts/ContextLogin';
@@ -8,11 +7,10 @@ import { LoginContext } from '../../../contexts/ContextLogin';
 export default function FormAccountComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
-    const { isLogin_To_Redirect } = React.useContext(LoginContext); // debp validar que recarge constante mente
+    const { isLogin_To_Redirect,handleLogout } = React.useContext(LoginContext);
     const [name, setname] = React.useState('');
     const [mail, setmail] = React.useState('');
 
-    const navigate = useNavigate();
 
     async function getMe(){
         const url = `https://bordeable-api.onrender.com/users/me`;
@@ -87,7 +85,8 @@ export default function FormAccountComponent() {
                 .then(result => {
                     console.log(result);
                     window.alert("Cuenta eliminada");
-                    navigate('/login');
+                    handleLogout();
+                    // navigate('/login');
                 })
         } catch (error) {
             console.error('Error:', error);

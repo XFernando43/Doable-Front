@@ -7,10 +7,12 @@ import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 export default function FormRegisterComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
-    const url_To_Login = 'https://bordeable-api.onrender.com/users/signup';
-    const navigate = useNavigate();
+    const [userUsed, setUserUsed] = React.useState(false);
 
+    const navigate = useNavigate();
+    
     async function Register() {
+        const url_To_Register = 'https://bordeable-api.onrender.com/users/signup';
         const data = {
             username: Username,
             password: Password,
@@ -18,17 +20,23 @@ export default function FormRegisterComponent() {
         };
 
         try {
-            await fetch(url_To_Login, {
-                method: "POST",
+            const response = await fetch(url_To_Register, {
+                method: 'POST',
                 headers: { "Content-Type": "application/json", },
                 body: JSON.stringify(data)
-            }).then(response => response.json())
-                .then(result => {
-                    console.log("Éxito:", result);
-                    navigate('/dashboard');
-                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Éxito:", data);
+                window.alert("Creado con extio");
+                navigate('/login');
+            } else {
+                console.error('Failed to login:', response.statusText);
+                setUserUsed(true);
+            }
         } catch (error) {
             console.error('Error:', error);
+            setUserUsed(true);
         }
     }
 
@@ -50,6 +58,12 @@ export default function FormRegisterComponent() {
         <>
             <form className='form'>
                 
+            {
+                    userUsed === true &&(
+                        <p className='message_erro'>Usuario Ya en uso</p>
+                    )
+                }
+
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
 

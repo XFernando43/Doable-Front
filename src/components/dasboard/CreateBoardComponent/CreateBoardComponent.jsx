@@ -29,6 +29,7 @@ export default function CreateBoardComponent(){
             if (response.ok) {
                 const data = await response.json();
                 console.log('Board created successfully:', data);
+                window.location.reload();
             } else {
                 console.error('Failed to create board:', response.statusText);
             }

@@ -65,7 +65,7 @@ export default function FormComponent() {
                 {
                     LoginFail === true &&(
                         <p className='message_erro'>Error en el usuario o contraseña</p>
-                        )
+                    )
                 }
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
