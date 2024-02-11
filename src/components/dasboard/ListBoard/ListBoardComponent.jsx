@@ -4,7 +4,7 @@ import './ListBoard.style.css';
 
 export default function ListBoardComponent(){
     const [Boards,setBoards] = React.useState([]);
-    // const [BoardTitle, setBoardTitle] = React.useState();
+    const [refres, setrefresh] = React.useState(false);
 
     async function getBoards() {
         const token = localStorage.getItem('token');
@@ -22,7 +22,7 @@ export default function ListBoardComponent(){
             console.log(data.boards);
             console.log(data.boards[0].board_id)
             setBoards(data.boards);
-
+            setrefresh(!refres);
           }
         } catch (error) {
           console.error("Error: ", error);
@@ -32,7 +32,7 @@ export default function ListBoardComponent(){
     React.useEffect(()=>{
         getBoards();
         console.log(Boards);
-    },[]);
+    },[refres]);
 
 
     return (

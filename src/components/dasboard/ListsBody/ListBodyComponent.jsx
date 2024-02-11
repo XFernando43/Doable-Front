@@ -12,7 +12,7 @@ export default function ListBodyComponent(){
     const [Board, SetBoard] = React.useState('');
     const [optionActive, SetOptionActive] = React.useState(false);
     const [Listas, setListas] = React.useState([]);
-
+    const [refres, setrefresh] = React.useState(false);
 
     
     const navigate = useNavigate();
@@ -67,6 +67,7 @@ export default function ListBodyComponent(){
           if (response.ok) {
             const data = await response.json();
             setListas(data.lists);
+            setrefresh(!refres);
           } 
         } catch (error) {
           console.error("Error: ", error);
@@ -101,7 +102,7 @@ export default function ListBodyComponent(){
     React.useEffect(()=>{
         getListas();
         getBoard();
-    },[id])
+    },[refres])
 
     const _background = {
       "background-color": color

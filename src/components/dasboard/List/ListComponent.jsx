@@ -11,7 +11,7 @@ export default function ListComponent({title, _id}){
     const [CardArray, SetCardArray] = React.useState([]);
     const [inputActive, setInputActive] = React.useState(false); 
     const [cardName, SetCardName] = React.useState('');
-
+    const [refres, setrefresh] = React.useState(false);
     
 
 
@@ -59,11 +59,9 @@ export default function ListComponent({title, _id}){
           });
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
-            
             SetCardArray(data.cards);
+            setrefresh(!refres);
 
-            console.log(CardArray);
           } 
         } catch (error) {
           console.error("Error: ", error);
@@ -109,8 +107,8 @@ export default function ListComponent({title, _id}){
     }
 
     React.useEffect(()=>{
-        getCards();
-    },[])
+      getCards();
+    },[refres])
 
     return(
         <div className="list_container">
