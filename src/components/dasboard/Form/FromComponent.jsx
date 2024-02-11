@@ -8,11 +8,12 @@ import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 export default function FormComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
+    const [LoginFail, setLoginFail] = React.useState(false);
     const { handleLogin,isLogin_To_Redirect } = React.useContext(LoginContext);
-    const url_To_Login = 'https://bordeable-api.onrender.com/users/SignIn';
     const navigate = useNavigate();
-   
+    
     async function Login() {
+        const url_To_Login = 'https://bordeable-api.onrender.com/users/SignIn';
         const data = {
             username: Username,
             password: Password
@@ -25,9 +26,13 @@ export default function FormComponent() {
                 body: JSON.stringify(data)
             }).then(response => response.json())
                 .then(result => {
-                    console.log("Éxito:", result);
-                    handleLogin(Username,result.data.token);
-                    navigate('/dashboard');
+                    if(result.ok){
+                        console.log("Éxito:", result);
+                        handleLogin(Username,result.data.token);
+                        navigate('/dashboard');
+                    }else{
+                        setLoginFail(true);
+                    }
                 })
         } catch (error) {
             console.error('Error:', error);
@@ -55,6 +60,12 @@ export default function FormComponent() {
         <>
             <form className='form'>
                 
+                {
+                    LoginFail === true &&(
+                        <p className='message_erro'>Error en el usuario o contraseña</p>
+                        
+                        )
+                }
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
 

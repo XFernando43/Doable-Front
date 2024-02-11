@@ -9,23 +9,50 @@ export default function FormAccountComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
     const { isLogin_To_Redirect } = React.useContext(LoginContext); // debp validar que recarge constante mente
+    const [name, setname] = React.useState('');
+    const [mail, setmail] = React.useState('');
 
-
-    const url_To_Login = 'https://bordeable-api.onrender.com/users/signup';
     const navigate = useNavigate();
 
-    async function Register() {
+    async function updateAccount(){
+        const url = `https://bordeable-api.onrender.com/users/me`;
+        const token = localStorage.getItem('token');
+        
         const data = {
-            username: Username,
-            password: Password,
-            role:"admin"
+            "name": name, 
+            "mail": mail, 
+            "username": Username, 
+            "password": Password 
         };
 
         try {
-            await fetch(url_To_Login, {
+            const response = await fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data), 
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log('user update successfully:', data);
+                window.alert("Usuario Actualizado");
+            } else {
+                console.error('Failed to update user:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error update user:', error);
+        } 
+    }
+
+    async function deleteAccount() {
+        const delete_url = 'https://bordeable-api.onrender.com/users/me';
+    
+        try {
+            await fetch(delete_url, {
                 method: "POST",
-                headers: { "Content-Type": "application/json", },
-                body: JSON.stringify(data)
+                headers: { "Content-Type": "application/json", }
             }).then(response => response.json())
                 .then(result => {
                     console.log("Éxito:", result);
@@ -38,15 +65,32 @@ export default function FormAccountComponent() {
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
+        console.log(Username);
     };
-
+    
+    const handleNameChange = (event) => {
+        setname(event.target.value);
+        console.log(Username);
+    };
+    
+    const handlemailChange = (event) => {
+        setmail(event.target.value);
+        console.log(Username);
+    };
+    
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
+        console.log(Username);
+    };
+    
+    const handleUpdateAccount = (event) => {
+        event.preventDefault();
+        updateAccount();
     };
 
-    const handleClick = (event) => {
+    const handleDeleteAccount = (event) => {
         event.preventDefault();
-        Register();
+        deleteAccount();
     };
 
     React.useEffect(()=>{
@@ -58,12 +102,12 @@ export default function FormAccountComponent() {
             <form className='form'>
                 
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
-                <InputFieldComponent idFor="Name" inputHandler={handlePasswordChange} type="text" />
-                <InputFieldComponent idFor="Email" inputHandler={handlePasswordChange} type="text" />
+                <InputFieldComponent idFor="Name" inputHandler={handleNameChange} type="text" />
+                <InputFieldComponent idFor="Email" inputHandler={handlemailChange} type="text" />
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
 
-                <ButtonComponent text="Update" type="Primary" size="lg" _function={handleClick}></ButtonComponent>
-                <ButtonComponent text="Delete My Account" type="Danger" size="lg" _function={handleClick}></ButtonComponent>
+                <ButtonComponent text="Update" type="Primary" size="lg" _function={handleUpdateAccount}></ButtonComponent>
+                <ButtonComponent text="Delete My Account" type="Danger" size="lg" _function={handleDeleteAccount} ></ButtonComponent>
 
             </form>
         </>
