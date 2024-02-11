@@ -1,9 +1,8 @@
 .card_container{
     border-radius: 6px;
     padding: var(--spacing-4, 16px);
-    /* min-width: 350px; */
-    /* max-width: auto; */
-    height: 170px;
+    min-height: 170px;
+    max-height: auto;
     background-color: #E2E8F0;
     
 }
@@ -32,7 +31,7 @@
     background: #FFF;
     padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
     overflow-y: hidden;
-    height: 20px;
+    /* height: 20px; */
     min-height: 20px;
     resize: vertical;  
     font-size: 16px;   
