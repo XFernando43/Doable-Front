@@ -41,7 +41,11 @@ export default function ListBodyComponent(){
         if (response.ok) {
           const data = await response.json();
           SetBoard(data.board[0].board_name);
-          setColor(data.board[0].board_color);
+          if(data.board[0].board_color == ''){
+            setColor("#E2E8F0");
+          }else{
+            setColor(data.board[0].board_color);
+          }
           
         } 
       } catch (error) {
@@ -105,14 +109,9 @@ export default function ListBodyComponent(){
         getBoard();
     },[Listas])
 
-    const _background = {
-      "background-color": color
-    }
-
-  
 
     return(
-      <div className="main_contentList" style={_background}>
+      <div className="main_contentList" style={{background:color}}>
         <div className="lists_body_container">
           <div className="list_head_container">
             

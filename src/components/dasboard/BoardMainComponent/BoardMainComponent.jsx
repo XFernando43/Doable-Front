@@ -24,7 +24,7 @@ export default function BoardMainComponent(){
             const data = await response.json();
             setBoards(data.boards);
             setrefresh(!refres);
-            // console.log(Boards);
+            console.log(Boards);
           }
         } catch (error) {
           console.error("Error: ", error);
