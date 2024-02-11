@@ -8,6 +8,7 @@ export default function FormRegisterComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
     const [userUsed, setUserUsed] = React.useState(false);
+    const [passwordShort, setPasswordShort] = React.useState(false);
 
     const navigate = useNavigate();
     
@@ -30,13 +31,17 @@ export default function FormRegisterComponent() {
                 console.log("Éxito:", data);
                 window.alert("Creado con extio");
                 navigate('/login');
-            } else {
-                console.error('Failed to login:', response.statusText);
+            } 
+            if(response.ok == false && response.status == 400){
+                setPasswordShort(true);
+            }
+            if(response.ok == false && response.status == 409){
                 setUserUsed(true);
             }
+
         } catch (error) {
             console.error('Error:', error);
-            setUserUsed(true);
+            // setPasswordShort(true);
         }
     }
 
@@ -58,13 +63,18 @@ export default function FormRegisterComponent() {
         <>
             <form className='form'>
                 
-            {
+                {
                     userUsed === true &&(
                         <p className='message_erro'>Usuario Ya en uso</p>
                     )
-                }
+                }          
 
                 <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
+                {
+                    passwordShort === true &&(
+                        <p className='message_erro'>contraseña demasiado corta</p>
+                    )
+                }
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
 
                 <ButtonComponent text="Register" type="Primary" size="lg" _function={handleClick}></ButtonComponent>
