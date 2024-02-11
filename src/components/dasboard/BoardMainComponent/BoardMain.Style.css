@@ -1,0 +1,6 @@
+.Boardmain_content{
+    display: flex;
+    width: 1280px;
+    flex-direction: column;
+    margin-inline: auto;
+}

@@ -1,6 +1,5 @@
 import TopBarComponent from "../../components/commons/TopBar/TopBarComponent"
-import SelectComponent from "../../components/dasboard/SelectOrder/SelectComponent"
-import ListBoardComponent from "../../components/dasboard/ListBoard/ListBoardComponent";
+import BoardMainComponent from "../../components/dasboard/BoardMainComponent/BoardMainComponent";
 import ContextLogin from "../../contexts/ContextLogin";
 import './Dashboard.style.css';
 export default function DashBoardPage(){
@@ -8,10 +7,7 @@ export default function DashBoardPage(){
         <ContextLogin>
             <div className="Board_container">
                 <TopBarComponent></TopBarComponent>
-                <div className="main_content">
-                    <SelectComponent/>
-                    <ListBoardComponent/>  
-                </div>
+                <BoardMainComponent/>
             </div>
         </ContextLogin>
     )

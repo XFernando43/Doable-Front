@@ -51,18 +51,18 @@ export default function BoardComponent({ value, title, _id, color }){
         }
     }
 
-    const background__color={
+    const Board_Color={
         background: Color, 
     };
 
-    const background_color={
+    const Title_Color={
         background: color, 
     };
 
     return (
         <>
             {value === '1' ? (
-                <div className='card_container board_to_create' style={background__color} id={_id}>
+                <div className='card_container board_to_create' style={Board_Color} id={_id}>
                     
                     <div className='input_container'>
                         <LabelComponent text="Board Title" size="sm" htmlFor="text_input" />
@@ -89,7 +89,7 @@ export default function BoardComponent({ value, title, _id, color }){
                 </div>
             ) : (
                 <button className="board_button" onClick={navigateToList}>
-                    <div className='card_container align-center board_created' style={background_color}>
+                    <div className='card_container align-center board_created' style={Title_Color}>
                     <TitleComponent text={title} size="smm"/>
                     </div>
                 </button>
