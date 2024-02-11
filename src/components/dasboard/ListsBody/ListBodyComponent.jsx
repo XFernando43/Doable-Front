@@ -1,9 +1,9 @@
 import ListComponent from "../List/ListComponent"
 import CreateListForm from "../CreateListForm/CreateListForm";
-import TitleComponent from "../../commons/Title/TitleComponent";
 import OptionsComponent from "../Options/OptionsComponent";
 import SelectOptionsComponent from "../Options/selectOptions/SelectOptionsComponent";
 import React from "react";
+import SubTitleComponent from "../SubTitle/SubTitleComponent";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import './ListBody.style.css'
@@ -12,8 +12,17 @@ export default function ListBodyComponent(){
     const [Board, SetBoard] = React.useState('');
     const [optionActive, SetOptionActive] = React.useState(false);
     const [Listas, setListas] = React.useState([]);
+
+
+    
     const navigate = useNavigate();
     const { id } = useParams();
+  
+    const [changeBoardTitle, setchangeBoardTitle] = React.useState(false);
+
+    function _setChangeBoardTitle(){
+      setchangeBoardTitle(!changeBoardTitle);
+    }
 
     async function getBoard(){
       const token = localStorage.getItem('token');
@@ -103,10 +112,10 @@ export default function ListBodyComponent(){
         <div className="lists_body_container">
           <div className="list_head_container">
             {/* <TitleComponent text="Ramon" size="md"/> */}
-            <TitleComponent text={Board} size="md"/>
+            <SubTitleComponent text={Board} size="md" change={changeBoardTitle}/>
             <OptionsComponent click={ShowOptionsHandle} />
             {optionActive && (
-              <SelectOptionsComponent type="item" _function={deleteBoard}/>
+              <SelectOptionsComponent type="item" _function={deleteBoard} _function2={_setChangeBoardTitle}/>
             )}
           </div>
 

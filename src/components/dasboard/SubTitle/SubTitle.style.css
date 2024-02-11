@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500&display=swap');
+.SubTitle{
+    color: var(--foreground, #171717);
+    font-family: "Familjen Grotesk";
+    max-width: 220px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 36px;
+}
+
+.BoardSubtitle_container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: var(--spacing-2, 8px);
+
+    border-radius: var(--rounded-md, 6px);
+    background: var(--background, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sm{
+    font-size: 14px !important;
+}
+
+.smm{
+    font-size: 18px !important;
+}
+
+.md{
+    font-size: 24px !important;
+}
+
+.lg{
+    font-size: 32px !important;
+}
+
