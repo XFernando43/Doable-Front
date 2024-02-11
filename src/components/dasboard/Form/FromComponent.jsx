@@ -8,10 +8,10 @@ import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
 export default function FormComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
-    const { handleLogin } = React.useContext(LoginContext);
+    const { handleLogin,isLogin_To_Redirect } = React.useContext(LoginContext);
     const url_To_Login = 'https://bordeable-api.onrender.com/users/SignIn';
     const navigate = useNavigate();
-
+   
     async function Login() {
         const data = {
             username: Username,
@@ -47,6 +47,9 @@ export default function FormComponent() {
         Login();
     };
 
+    React.useEffect(()=>{
+        isLogin_To_Redirect("dashboard","true");
+    },[])
 
     return (
         <>

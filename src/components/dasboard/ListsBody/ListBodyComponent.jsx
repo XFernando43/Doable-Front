@@ -7,13 +7,14 @@ import SubTitleComponent from "../SubTitle/SubTitleComponent";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import './ListBody.style.css'
+import { LoginContext } from "../../../contexts/ContextLogin";
 export default function ListBodyComponent(){
     let [color, setColor] = React.useState('');
     const [Board, SetBoard] = React.useState('');
     const [optionActive, SetOptionActive] = React.useState(false);
     const [Listas, setListas] = React.useState([]);
     const [refres, setrefresh] = React.useState(false);
-
+    const {isLogin_To_Redirect} = React.useContext(LoginContext);
     
     const navigate = useNavigate();
     const { id } = useParams();
@@ -100,6 +101,7 @@ export default function ListBodyComponent(){
     }
 
     React.useEffect(()=>{
+        isLogin_To_Redirect("login","false");
         getListas();
         getBoard();
     },[refres])

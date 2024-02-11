@@ -9,10 +9,7 @@ export default function ListPage(){
         <>
             <ContextLogin>  
                 <TopBarComponent></TopBarComponent>
-                
                 <ListBodyComponent/>
-               
-
             </ContextLogin>
     
     

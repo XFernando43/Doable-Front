@@ -3,10 +3,14 @@ import ButtonComponent from '../../commons/Button/ButtonComponent'
 import { useNavigate } from 'react-router-dom';
 import './Form.style.css'
 import InputFieldComponent from '../../commons/InputFIelds/FieldComponent';
+import { LoginContext } from '../../../contexts/ContextLogin';
 
 export default function FormAccountComponent() {
     const [Username, setUsername] = React.useState("");
     const [Password, setPassword] = React.useState("");
+    const { isLogin_To_Redirect } = React.useContext(LoginContext); // debp validar que recarge constante mente
+
+
     const url_To_Login = 'https://bordeable-api.onrender.com/users/signup';
     const navigate = useNavigate();
 
@@ -45,6 +49,9 @@ export default function FormAccountComponent() {
         Register();
     };
 
+    React.useEffect(()=>{
+        isLogin_To_Redirect("login","false");
+    },[]);
 
     return (
         <>

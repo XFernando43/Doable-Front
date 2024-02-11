@@ -1,10 +1,14 @@
 import React from 'react';
 import BoardComponent from '../Board/BoardComponent';
 import './ListBoard.style.css';
+// import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../../../contexts/ContextLogin';
 
 export default function ListBoardComponent(){
     const [Boards,setBoards] = React.useState([]);
     const [refres, setrefresh] = React.useState(false);
+    const { isLogin_To_Redirect } = React.useContext(LoginContext);
+    
 
     async function getBoards() {
         const token = localStorage.getItem('token');
@@ -30,6 +34,7 @@ export default function ListBoardComponent(){
     }
 
     React.useEffect(()=>{
+        isLogin_To_Redirect("login","false");
         getBoards();
         console.log(Boards);
     },[refres]);
