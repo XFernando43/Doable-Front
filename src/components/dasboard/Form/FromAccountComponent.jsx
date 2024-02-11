@@ -14,6 +14,32 @@ export default function FormAccountComponent() {
 
     const navigate = useNavigate();
 
+    async function getMe(){
+        const url = `https://bordeable-api.onrender.com/users/me`;
+        const token = localStorage.getItem('token');
+
+        try {
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data.me);
+                setUsername(data.me.username);
+                setmail(data.me.mail);
+                setname(data.me.name);
+            } else {
+                console.error('Failed to get user:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error getting user:', error);
+        } 
+    }
+
     async function updateAccount(){
         const url = `https://bordeable-api.onrender.com/users/me`;
         const token = localStorage.getItem('token');
@@ -48,15 +74,20 @@ export default function FormAccountComponent() {
 
     async function deleteAccount() {
         const delete_url = 'https://bordeable-api.onrender.com/users/me';
+        const token = localStorage.getItem('token');
     
         try {
             await fetch(delete_url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json", }
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
             }).then(response => response.json())
                 .then(result => {
-                    console.log("Éxito:", result);
-                    navigate('/dashboard');
+                    console.log(result);
+                    window.alert("Cuenta eliminada");
+                    navigate('/login');
                 })
         } catch (error) {
             console.error('Error:', error);
@@ -95,15 +126,16 @@ export default function FormAccountComponent() {
 
     React.useEffect(()=>{
         isLogin_To_Redirect("login","false");
+        getMe();
     },[]);
 
     return (
         <>
             <form className='form'>
                 
-                <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" />
-                <InputFieldComponent idFor="Name" inputHandler={handleNameChange} type="text" />
-                <InputFieldComponent idFor="Email" inputHandler={handlemailChange} type="text" />
+                <InputFieldComponent idFor="Username" inputHandler={handleUsernameChange} type="text" _value={Username}/>
+                <InputFieldComponent idFor="Name" inputHandler={handleNameChange} type="text" _value={name}/>
+                <InputFieldComponent idFor="Email" inputHandler={handlemailChange} type="text" _value={mail}/>
                 <InputFieldComponent idFor="Password" inputHandler={handlePasswordChange} type="text" />
 
                 <ButtonComponent text="Update" type="Primary" size="lg" _function={handleUpdateAccount}></ButtonComponent>

@@ -1,7 +1,8 @@
 .card_container{
     border-radius: 6px;
     padding: var(--spacing-4, 16px);
-    width: 350px;
+    /* min-width: 350px; */
+    /* max-width: auto; */
     height: 170px;
     background-color: #E2E8F0;
     

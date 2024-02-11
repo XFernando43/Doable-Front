@@ -79,11 +79,7 @@ export default function BoardComponent({ value, title, _id, color }){
                             </button>
                             {
                                 PickerVisible &&(
-                                    <ColorModal
-                                        Color={Color}
-                                        SetColor={setColor}
-                                    />
-
+                                    <ColorModal Color={Color} SetColor={setColor}/>
                                 )
                             }
                         </div>

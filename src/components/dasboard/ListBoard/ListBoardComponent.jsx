@@ -23,8 +23,6 @@ export default function ListBoardComponent(){
           });
           if (response.ok) {
             const data = await response.json();
-            console.log(data.boards);
-            console.log(data.boards[0].board_id)
             setBoards(data.boards);
             setrefresh(!refres);
           }

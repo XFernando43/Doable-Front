@@ -4,7 +4,7 @@ export default function InputFieldComponent({idFor, inputHandler, type, _value})
     return(
         <div className='input-container'>
             <label className='label' htmlFor={idFor}>{idFor}</label>
-            <input value={_value} className='input-form' type={type} id={idFor} onChange={inputHandler} />
+            <input placeholder={_value} className='input-form' type={type} id={idFor} onChange={inputHandler} />
         </div>
     )
 }
